@@ -1,6 +1,6 @@
 import requests
 
-# Replace this with the actual URL of your API
+
 base_url = "https://localhost:5000"
 
 # Sample data for the request

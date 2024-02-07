@@ -1,4 +1,3 @@
-# api.py
 from flask import Flask, jsonify, request, render_template
 import logging
 from flask_caching import Cache
@@ -9,7 +8,6 @@ app = Flask(__name__)
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 # Set up caching
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
@@ -27,6 +25,7 @@ def get_weather(city):
 @app.route('/weather', methods=['GET', 'POST'])
 @cache.cached(timeout=300,key_prefix=lambda: request.get_json()['city'])
 def get_weather():
+    # Get the user request 
     data = request.get_json()
     city = data.get('city','')
     print(city)
@@ -42,7 +41,7 @@ def get_weather():
     #print(city)
     return jsonify(weather_data)
 
-@app.route('/')
+@app.route('/weatherApp')
 def index():
     return render_template('index.html')
 

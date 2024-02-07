@@ -6,15 +6,15 @@ class WeatherAPITestCase(unittest.TestCase):
     def setUp(self):
         app.testing = True
         self.app = app.test_client()
-
+    # Test succes case
     def test_get_weather_success(self):
-        response = self.app.post('/weather', json={"city": "New York"})
+        response = self.app.post('/weather', json={"city": "Tunis"})
         data = self.get_json(response)
         self.assertEqual(response.status_code, 200)
         self.assertIn('main', data, "Weather data not present in response.")
-
+    # Test error case
     def test_get_weather_error(self):
-        response = self.app.post('/weather', json={})
+        response = self.app.post('/weather', json={"city":""})
         data = self.get_json(response)
         self.assertEqual(response.status_code, 400)
         self.assertIn('error', data, "Error message not present in response.")
