@@ -65,5 +65,5 @@ This is a simple web application built with Flask that retrieves weather informa
     docker run -p 5000:5000 my-flask-app
     ```
 
-3. Access the application in your browser at `http://localhost:5000`.
+3. Access the application in your browser at `http://localhost:5000/weatherApp`.
 
